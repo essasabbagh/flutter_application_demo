@@ -1,19 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'home_screen.dart';
-import 'providers/provider.dart';
 
-void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => MainProvider()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+void main() async {
+  await GetStorage.init();
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -27,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Simple Weather App'),
     );
   }
 }

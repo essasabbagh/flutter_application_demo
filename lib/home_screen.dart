@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_application_demo/services/network.dart';
+import 'package:flutter_application_demo/services/geo_service.dart';
 
-import '../models/weather_model.dart';
+import 'models/weather_model.dart';
+import 'services/weather_service.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,6 +15,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Future<WeatherModel> getData() async {
+    try {
+      final cityName = await GeoService.getCityName();
+      // final cityName = 'Cairo';
+
+      if (cityName.isEmpty) throw 'City not found !!';
+
+      final info = await WeatherService.getWeatherData(cityName);
+
+      return info;
+    } on Exception {
+      throw 'City not found !!';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: FutureBuilder(
-          future: NetworkService.getWetherData('London'),
+          future: getData(),
           builder: (context, AsyncSnapshot<WeatherModel> snap) {
             if (snap.connectionState == ConnectionState.waiting) {
               return const Center(
@@ -39,15 +55,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'condition : ${snap.data?.current.condition.icon}',
+                    'City :${snap.data!.location.name}',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   Text(
                     'Temp (C) : ${snap.data!.current.tempC}',
-                    style: Theme.of(context).textTheme.headlineMedium,
-                  ),
-                  Text(
-                    'City :${snap.data!.location.name}',
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   Text(
@@ -58,11 +70,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             );
           }),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => context.read<MainProvider>().increment(),
-      //   tooltip: 'Increment',
-      //   child: const Icon(Icons.add),
-      // ),
     );
   }
 }

@@ -5,8 +5,8 @@ import '../models/weather_model.dart';
 
 import 'client.dart';
 
-class NetworkService {
-  static Future<WeatherModel> getWetherData(String city) async {
+class WeatherService {
+  static Future<WeatherModel> getWeatherData(String city) async {
     try {
       final res = await DioClient.instance.get('?key=$apiKey&q=$city&aqi=no');
       if (res.statusCode != 200) throw res.statusMessage ?? 'No Data !!';

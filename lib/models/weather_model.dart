@@ -30,29 +30,29 @@ class WeatherModel {
 }
 
 class Current {
-  final double lastUpdatedEpoch;
+  final num lastUpdatedEpoch;
   final String lastUpdated;
-  final double tempC;
-  final double tempF;
-  final double isDay;
+  final num tempC;
+  final num tempF;
+  final num isDay;
   final Condition condition;
-  final double windMph;
-  final double windKph;
-  final double windDegree;
+  final num windMph;
+  final num windKph;
+  final num windDegree;
   final String windDir;
-  final double pressureMb;
-  final double pressureIn;
-  final double precipMm;
-  final double precipIn;
-  final double humidity;
-  final double cloud;
-  final double feelslikeC;
-  final double feelslikeF;
-  final double visKm;
-  final double visMiles;
-  final double uv;
-  final double gustMph;
-  final double gustKph;
+  final num pressureMb;
+  final num pressureIn;
+  final num precipMm;
+  final num precipIn;
+  final num humidity;
+  final num cloud;
+  final num feelslikeC;
+  final num feelslikeF;
+  final num visKm;
+  final num visMiles;
+  final num uv;
+  final num gustMph;
+  final num gustKph;
 
   Current({
     required this.lastUpdatedEpoch,
@@ -136,7 +136,7 @@ class Current {
 class Condition {
   final String text;
   final String icon;
-  final double code;
+  final num code;
 
   Condition({
     required this.text,
@@ -161,10 +161,10 @@ class Location {
   final String name;
   final String region;
   final String country;
-  final double lat;
-  final double lon;
+  final num lat;
+  final num lon;
   final String tzId;
-  final double localtimeEpoch;
+  final num localtimeEpoch;
   final String localtime;
 
   Location({
