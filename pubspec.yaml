@@ -36,6 +36,8 @@ dependencies:
 
   # State Management
   get_it: ^7.6.7
+  equatable: ^2.0.5
+  flutter_hooks: ^0.20.5
   hooks_riverpod: ^2.5.1
 
   # Permission
@@ -59,10 +61,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - assets/icons/
+    - assets/images/
 
   # fonts:
   #   - family: Schyler
