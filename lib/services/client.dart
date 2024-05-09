@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import '../constants.dart';
+import '../core/constants/constants.dart';
 
 /// Create a singleton class to contain all Dio methods and helper functions
 class DioClient {
@@ -33,7 +33,7 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       if (response.statusCode == 200) return response;
-      throw "something went wrong";
+      throw 'something went wrong';
     } catch (e) {
       rethrow;
     }
@@ -60,7 +60,7 @@ class DioClient {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return response;
       }
-      throw "something went wrong";
+      throw 'something went wrong';
     } catch (e) {
       rethrow;
     }
@@ -86,7 +86,7 @@ class DioClient {
       );
       if (response.statusCode == 200) return response.data;
 
-      throw "something went wrong";
+      throw 'something went wrong';
     } catch (e) {
       rethrow;
     }
@@ -109,7 +109,7 @@ class DioClient {
         cancelToken: cancelToken,
       );
       if (response.statusCode == 204) return response;
-      throw "something went wrong";
+      throw 'something went wrong';
     } catch (e) {
       rethrow;
     }
@@ -122,16 +122,16 @@ class NetworkException implements Exception {
   NetworkException.fromDioError(DioException dioError) {
     switch (dioError.type) {
       case DioExceptionType.cancel:
-        errorMessage = "Request to the server was cancelled.";
+        errorMessage = 'Request to the server was cancelled.';
         break;
       case DioExceptionType.connectionTimeout:
-        errorMessage = "Connection timed out.";
+        errorMessage = 'Connection timed out.';
         break;
       case DioExceptionType.receiveTimeout:
-        errorMessage = "Receiving timeout occurred.";
+        errorMessage = 'Receiving timeout occurred.';
         break;
       case DioExceptionType.sendTimeout:
-        errorMessage = "Request send timeout.";
+        errorMessage = 'Request send timeout.';
         break;
       case DioExceptionType.badResponse:
         errorMessage = _handleStatusCode(dioError.response?.statusCode);
