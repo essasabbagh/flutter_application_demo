@@ -4,8 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-import 'package:flutter_application_demo/core/constants/constants.dart';
-import 'package:flutter_application_demo/core/constants/nums.dart';
+import 'package:flutter_application_demo/core/constants/network.dart';
 import 'package:flutter_application_demo/core/errors/error_handler.dart';
 import 'package:flutter_application_demo/core/errors/failure.dart';
 

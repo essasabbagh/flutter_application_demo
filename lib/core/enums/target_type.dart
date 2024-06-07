@@ -1,8 +1,3 @@
-enum OrderOption {
-  desc,
-  asc,
-}
-
 enum TargetType {
   subject('App\\Models\\Subject'),
   lesson('App\\Models\\Lesson'),
