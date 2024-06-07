@@ -23,6 +23,24 @@ class MainApp extends ConsumerWidget {
       themeAnimationCurve: Curves.bounceInOut,
       themeAnimationDuration: kThemeAnimationDuration,
       // themeAnimationStyle: AnimationStyle(),
+
+      builder: (context, child) {
+        final mediaQueryData = MediaQuery.of(context);
+
+        // Calculate the scaled text factor using the clamp function to ensure it stays within a specified range.
+        final scale = mediaQueryData.textScaler.clamp(
+          minScaleFactor: 1.0, // Minimum scale factor allowed.
+          maxScaleFactor: 1.3, // Maximum scale factor allowed.
+        );
+
+        return MediaQuery(
+          // Replace the textScaler with the calculated scale.
+          data: mediaQueryData.copyWith(
+            textScaler: scale,
+          ),
+          child: child!,
+        );
+      },
     );
   }
 }
