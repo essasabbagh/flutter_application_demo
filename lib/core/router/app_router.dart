@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:flutter_application_demo/core/keys/keys.dart';
 import 'package:flutter_application_demo/home_screen.dart';
-import 'package:flutter_application_demo/providers/auth/auth_provider.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   // final authNotifier = ref.read(authNotifierProvider.notifier);

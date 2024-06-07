@@ -23,8 +23,10 @@ extension StringExtensions on String {
   bool get hasOnlyWhitespaces => trim().isEmpty && isNotEmpty;
 
   String toSpaceSeparated() {
-    final value =
-        replaceAllMapped(RegExp(r'.{4}'), (match) => '${match.group(0)} ');
+    final value = replaceAllMapped(
+      RegExp(r'.{4}'),
+      (match) => '${match.group(0)} ',
+    );
     return value;
   }
 

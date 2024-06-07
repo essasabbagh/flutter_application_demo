@@ -42,19 +42,4 @@ extension ContextExtensionss on BuildContext {
   }
 
   void openDrawer() => scaffold.openDrawer();
-
-  Future showBottomSheet(
-    Widget child, {
-    bool isScrollControlled = true,
-    Color? backgroundColor,
-    Color? barrierColor,
-  }) {
-    return showModalBottomSheet(
-      context: this,
-      barrierColor: barrierColor,
-      isScrollControlled: isScrollControlled,
-      backgroundColor: backgroundColor,
-      builder: (context) => child,
-    );
-  }
 }
