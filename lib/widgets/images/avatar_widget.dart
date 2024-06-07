@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_application_demo/core/helpers/image_helper.dart';
+
 /// ```dart
 /// AvatarWidget(
 ///  imageUrl: 'https://example.com/avatar.png',
@@ -20,7 +22,8 @@ class AvatarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: size / 2,
-      backgroundImage: NetworkImage(imageUrl),
+      // backgroundImage: NetworkImage(imageUrl),
+      backgroundImage: ImageHelper.cashedImageProvider(imageUrl),
     );
   }
 }

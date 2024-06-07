@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ImageHelper {
-  static ImageProvider cashedImgProvider(String url) {
-    if (isImageUrl(url)) {
+  static ImageProvider cashedImageProvider(String imageUrl) {
+    if (isImageUrl(imageUrl)) {
       // Load image
-      return CachedNetworkImageProvider(url);
+      return CachedNetworkImageProvider(imageUrl);
     } else {
       // Handle error: Not a valid image URL
       return const AssetImage('');
