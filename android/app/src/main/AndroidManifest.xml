@@ -4,7 +4,7 @@
     package="com.example.test">
 
     <application
-        android:label="demo"
+        android:label="@string/label"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
