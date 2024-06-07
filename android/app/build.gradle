@@ -22,6 +22,12 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace "com.example.test"
     compileSdkVersion flutter.compileSdkVersion // 34
@@ -88,6 +94,6 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.android.support:multidex:2.0.1'
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    // implementation 'com.android.support:multidex:2.0.1'
+    // implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
