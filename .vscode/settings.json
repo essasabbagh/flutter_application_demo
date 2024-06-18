@@ -1,5 +1,5 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.22.1",
+  "dart.flutterSdkPath": ".fvm/versions/3.22.2",
   "files.exclude": {
     "**/*.freezed.dart": true,
     "**/*.g.dart": true
@@ -11,5 +11,5 @@
     ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
     "readme.*": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
     "*.dart": "$(capture).g.dart, $(capture).freezed.dart"
-  },
+  }
 }
