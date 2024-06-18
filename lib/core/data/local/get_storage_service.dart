@@ -1,14 +1,22 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class StorageService {
+import 'storage_service.dart';
+
+class GetStorageService extends StorageService {
   final _box = GetStorage();
 
-  Future<void> write(String key, String value) async =>
-      await _box.write(key, value);
+  @override
+  Future<void> save(String key, String data) => _box.write(key, data);
 
-  Future<void> remove(String key) async => await _box.remove(key);
-
-  Future<void> clear() async => await _box.erase();
-
+  @override
   String read(String key) => _box.read<String>(key) ?? '';
+
+  @override
+  Future<void> remove(String key) => _box.remove(key);
+
+  @override
+  Future<void> clear() async => await _box.erase();
 }
+
+final storageServiceProvider = Provider((ref) => GetStorageService());

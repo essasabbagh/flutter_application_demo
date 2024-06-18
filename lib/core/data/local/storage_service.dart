@@ -1,14 +1,12 @@
 /// Storage service interface
 abstract class StorageService {
-  void init();
+  String read(String key);
 
-  Future<bool> remove(String key);
+  Future<void> save(String key, String data);
 
-  Future<Object?> get(String key);
-
-  Future<bool> set(String key, String data);
+  Future<void> remove(String key);
 
   Future<void> clear();
 
-  Future<bool> has(String key);
+  // Future<bool> has(String key);
 }
