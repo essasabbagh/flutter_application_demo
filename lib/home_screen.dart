@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:flutter_application_demo/locale/generated/l10n.dart';
+import 'package:flutter_application_demo/widgets/language_picker.dart';
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -13,10 +16,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Home'),
+        title: Text(S.of(context).appName),
       ),
       body: const Center(
-        child: Text('Home'),
+        child: LanguagePicker(),
       ),
     );
   }
