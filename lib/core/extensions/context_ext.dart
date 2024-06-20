@@ -7,6 +7,18 @@ extension ContextExtensionss on BuildContext {
   EdgeInsets get mediaQueryViewPadding => mediaQuery.viewPadding;
   EdgeInsets get mediaQueryViewInsets => mediaQuery.viewInsets;
 
+  TextScaler get textScaler => mediaQuery.textScaler;
+
+  // Calculate the scaled text factor using the clamp function to ensure it stays within a specified range.
+  TextScaler get clampTextScaler {
+    double unitHeight = isPhone ? 1 : width * 0.001;
+
+    return textScaler.clamp(
+      minScaleFactor: 1.0 * unitHeight, // Minimum scale factor allowed.
+      maxScaleFactor: 1.3 * unitHeight, // Maximum scale factor allowed.
+    );
+  }
+
   Orientation get orientation => mediaQuery.orientation;
   double get devicePixelRatio => mediaQuery.devicePixelRatio;
   bool get isLandscape => orientation == Orientation.landscape;
