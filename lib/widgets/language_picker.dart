@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_demo/core/enums/connectivity_status.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'package:flutter_application_demo/core/utils/snackbars.dart';
 import 'package:flutter_application_demo/locale/langes.dart';
 import 'package:flutter_application_demo/locale/provider/locale_provider.dart';
+import 'package:flutter_application_demo/providers/connectivity_status_notifier.dart';
 
 class LanguagePicker extends ConsumerWidget {
   const LanguagePicker({super.key});
@@ -12,6 +15,17 @@ class LanguagePicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     Locale currentLocale = ref.watch(localeControllerProvider);
     List<Locale> supportedLocales = ref.watch(supportedLocalesProvider);
+
+    ref.listen(connectivityStatusProviders, (prevState, newState) {
+      showSnackBar(
+        newState == ConnectivityStatus.isConnected
+            ? 'Is Connected to Internet'
+            : 'Is Disconnected from Internet',
+        backgroundColor: newState == ConnectivityStatus.isConnected
+            ? Colors.green
+            : Colors.red,
+      );
+    });
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
